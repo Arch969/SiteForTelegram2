@@ -22,22 +22,51 @@
             border-radius: 5px;
             border: none;
             color: white;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            opacity: 0.8;
         }
         .rock { background-color: #4CAF50; }
         .paper { background-color: #2196F3; }
         .scissors { background-color: #f44336; }
+        .choices {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .choice {
+            margin: 0 15px;
+            cursor: pointer;
+        }
         #result {
             margin-top: 20px;
             font-size: 20px;
             font-weight: bold;
+            color: #555;
+        }
+        img {
+            width: 100px; /* Размер изображений */
+            height: auto;
         }
     </style>
 </head>
 <body>
     <h1>Камень, Ножницы, Бумага</h1>
-    <button class="button rock" onclick="play('rock')">Камень</button>
-    <button class="button paper" onclick="play('paper')">Бумага</button>
-    <button class="button scissors" onclick="play('scissors')">Ножницы</button>
+    <div class="choices">
+        <div class="choice" onclick="play('rock')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Rock_paper_scissors_rock.svg/1200px-Rock_paper_scissors_rock.svg.png" alt="Камень">
+            <p>Камень</p>
+        </div>
+        <div class="choice" onclick="play('paper')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rock_paper_scissors_paper.svg/1200px-Rock_paper_scissors_paper.svg.png" alt="Бумага">
+            <p>Бумага</p>
+        </div>
+        <div class="choice" onclick="play('scissors')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Rock_paper_scissors_scissors.svg/1200px-Rock_paper_scissors_scissors.svg.png" alt="Ножницы">
+            <p>Ножницы</p>
+        </div>
+    </div>
 
     <div id="result"></div>
 
