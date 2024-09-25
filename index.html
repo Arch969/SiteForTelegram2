@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Камень, Ножницы, Бумага</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .button {
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            opacity: 0.8;
+        }
+        .rock { background-color: #4CAF50; }
+        .paper { background-color: #2196F3; }
+        .scissors { background-color: #f44336; }
+        .choices {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .choice {
+            margin: 0 15px;
+            cursor: pointer;
+            transition: transform 0.2s; /* Анимация при выборе */
+        }
+        .choice:hover {
+            transform: scale(1.1); /* Увеличение при наведении */
+        }
+        #thinking {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #555;
+            opacity: 0; /* Скрываем текст изначально */
+            transition: opacity 0.5s; /* Плавный переход */
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #555;
+            transition: opacity 0.5s; /* Плавный переход результата */
+            opacity: 0; /* Скрываем результат изначально */
+        }
+        img {
+            width: 100px; /* Размер изображений */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Камень, Ножницы, Бумага</h1>
+    <div class="choices">
+        <div class="choice" onclick="play('rock')">
+            <img src="https://i.postimg.cc/5tBnHS0f/1.png" alt="Камень">
+            <p>Камень</p>
+        </div>
+        <div class="choice" onclick="play('paper')">
+            <img src="https://i.postimg.cc/Bv0CGPCk/2.png" alt="Бумага">
+            <p>Бумага</p>
+        </div>
+        <div class="choice" onclick="play('scissors')">
+            <img src="https://i.postimg.cc/rpNNyynm/3.png" alt="Ножницы">
+            <p>Ножницы</p>
+        </div>
+    </div>
+
+    <div id="thinking">Бот думает...</div>
+    <div id="result"></div>
+
+    <script>
+        function play(playerChoice) {
+            const choices = ['rock', 'scissors', 'paper'];
+            const botChoice = choices[Math.floor(Math.random() * choices.length)];
+            let result = '';
+
+            // Определяем победителя
+            if (playerChoice === botChoice) {
+                result = "Ничья!";
+            } else if (
+                (playerChoice === "rock" && botChoice === "scissors") ||
+                (playerChoice === "scissors" && botChoice === "paper") ||
+                (playerChoice === "paper" && botChoice === "rock")
+            ) {
+                result = "Вы выиграли!";
+            } else {
+                result = "Бот выиграл!";
+            }
+
+            // Переводим выбор бота на русский
+            let translatedBotChoice;
+            if (botChoice === "rock") {
+                translatedBotChoice = "камень";
+            } else if (botChoice === "scissors") {
+                translatedBotChoice = "ножницы";
+            } else {
+                translatedBotChoice = "бумага";
+            }
+
+            // Показываем текст "Бот думает..."
+            const thinkingElement = document.getElementById('thinking');
+            thinkingElement.style.opacity = 1; // Показываем текст
+            document.getElementById('result').style.opacity = 0; // Скрываем результат
+
+            // Устанавливаем задержку перед отображением результата
+            setTimeout(() => {
+                thinkingElement.style.opacity = 0; // Скрываем текст "Бот думает..."
+                document.getElementById('result').innerHTML = `Бот выбрал ${translatedBotChoice}. ${result}`;
+                document.getElementById('result').style.opacity = 1; // Показываем результат
+            }, 1000); // Задержка 1 секунда
+        }
+    </script>
+</body>
+</html>
