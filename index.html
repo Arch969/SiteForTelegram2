@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Камень, Ножницы, Бумага</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .button {
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+            color: white;
+        }
+        .rock { background-color: #4CAF50; }
+        .paper { background-color: #2196F3; }
+        .scissors { background-color: #f44336; }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Камень, Ножницы, Бумага</h1>
+    <button class="button rock" onclick="play('rock')">Камень</button>
+    <button class="button paper" onclick="play('paper')">Бумага</button>
+    <button class="button scissors" onclick="play('scissors')">Ножницы</button>
+
+    <div id="result"></div>
+
+    <script>
+        function play(playerChoice) {
+            const choices = ['rock', 'paper', 'scissors'];
+            const botChoice = choices[Math.floor(Math.random() * choices.length)];
+            let result = '';
+
+            // Определяем победителя
+            if (playerChoice === botChoice) {
+                result = "Ничья!";
+            } else if (
+                (playerChoice === "rock" && botChoice === "scissors") ||
+                (playerChoice === "scissors" && botChoice === "paper") ||
+                (playerChoice === "paper" && botChoice === "rock")
+            ) {
+                result = "Вы выиграли!";
+            } else {
+                result = "Бот выиграл!";
+            }
+
+            // Отображаем результат
+            document.getElementById('result').innerHTML = `Бот выбрал ${botChoice}. ${result}`;
+        }
+    </script>
+</body>
+</html>
