@@ -36,7 +36,7 @@
             margin-top: 20px;
         }
         .choice {
-            margin: 0 15px;
+            margin: 0 20px;
             cursor: pointer;
         }
         #result {
@@ -55,15 +55,15 @@
     <h1>Камень, Ножницы, Бумага</h1>
     <div class="choices">
         <div class="choice" onclick="play('rock')">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Rock_paper_scissors_rock.svg/1200px-Rock_paper_scissors_rock.svg.png" alt="Камень">
+            <img src="https://i.postimg.cc/5tBnHS0f/1.png" alt="Камень">
             <p>Камень</p>
         </div>
         <div class="choice" onclick="play('paper')">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Rock_paper_scissors_paper.svg/1200px-Rock_paper_scissors_paper.svg.png" alt="Бумага">
+            <img src="https://i.postimg.cc/Bv0CGPCk/2.png" alt="Бумага">
             <p>Бумага</p>
         </div>
         <div class="choice" onclick="play('scissors')">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Rock_paper_scissors_scissors.svg/1200px-Rock_paper_scissors_scissors.svg.png" alt="Ножницы">
+            <img src="https://i.postimg.cc/rpNNyynm/3.png" alt="Ножницы">
             <p>Ножницы</p>
         </div>
     </div>
@@ -72,7 +72,7 @@
 
     <script>
         function play(playerChoice) {
-            const choices = ['rock', 'paper', 'scissors'];
+            const choices = ['камень', 'ножницы', 'бумага'];
             const botChoice = choices[Math.floor(Math.random() * choices.length)];
             let result = '';
 
